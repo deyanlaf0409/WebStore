@@ -11,7 +11,7 @@
     <a href="../samplewebpage.php" class="back-link"></a>
   </div>
   
-  <form class="fade-in" id="reg-form">
+  <form class="fade-in" id="reg-form" enctype="multipart/form-data">
     <h1>Register</h1>
 
     <label for="username">Username:</label>

@@ -1,71 +1,66 @@
-
 function checkRegister(event) {
-    event.preventDefault();
-    var username = document.getElementById("username").value;
-    var email = document.getElementById("email");
-    var password = document.getElementById("password").value;
-    var confirmPassword = document.getElementById("confirm-password").value;
-    var checkbox = document.getElementById("agree");
-  
-    if (!username || !email.value || !password || !confirmPassword) {
+  event.preventDefault();
+  var username = document.getElementById("username").value.trim();
+  var email = document.getElementById("email").value.trim();
+  var password = document.getElementById("password").value.trim();
+  var confirmPassword = document.getElementById("confirm-password").value;
+  var checkbox = document.getElementById("agree");
+
+  if (!username || !email || !password || !confirmPassword) {
       alert("Please fill in all the fields.");
-      event.preventDefault(); // Cancel the form submission
       return false;
-    }
-  
-    if (!email.checkValidity()) {
-      alert("Please enter a valid email address.");
-      event.preventDefault(); // Cancel the form submission
-      return false;
-    }
-  
-    // Password validation
-    if (password.length < 8) {
-      alert("Password must be at least 8 characters long.");
-      event.preventDefault(); // Cancel the form submission
-      return false;
-    }
-  
-    if (password !== confirmPassword) {
-      alert("Passwords do not match.");
-      event.preventDefault(); // Cancel the form submission
-      return false;
-    }
-  
-    if (!checkbox.checked) {
-      alert("Please agree to the terms and conditions.");
-      event.preventDefault(); // Cancel the form submission
-      return false;
-    }
-  
-    
-    // Registration logic...
-    // Assuming the registration logic is successful, proceed with redirection.
-  
-     // Assuming validation passes, send registration data to server using AJAX
-     var xhr = new XMLHttpRequest();
-     xhr.open("POST", "../php/index.php", true);
-     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-     
-     xhr.onreadystatechange = function () {
-       if (xhr.readyState === XMLHttpRequest.DONE) {
-         if (xhr.status === 200) {
-           // Registration successful, redirect
-           window.location.href = "http://localhost/Register/Confirmation/verify-page.html";
-         } else {
-           alert("Registration failed. Please try again later.");
-         }
-       }
-     };
-     
-     var data = "username=" + encodeURIComponent(username) +
-                "&email=" + encodeURIComponent(email.value) +
-                "&password=" + encodeURIComponent(password);
-     xhr.send(data);
-  
-    // Redirect to the confirmation page if all conditions are met and registration is successful.
-    //window.location.href = "http://localhost:8080/Register/Confirmation/verify_page.html";
   }
+
+  if (!document.getElementById("email").checkValidity()) {
+      alert("Please enter a valid email address.");
+      return false;
+  }
+
+  if (password.length < 8) {
+      alert("Password must be at least 8 characters long.");
+      return false;
+  }
+
+  if (password !== confirmPassword) {
+      alert("Passwords do not match.");
+      return false;
+  }
+
+  if (!checkbox.checked) {
+      alert("Please agree to the terms and conditions.");
+      return false;
+  }
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "db_conn_reg.php", true);
+
+  xhr.onreadystatechange = function () {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+              var response = xhr.responseText;
+
+              console.log("Server Response:", response);
+
+              if (response.trim() === "success") {
+                  window.location.href = "Confirmation/verify-page.php";
+              } else {
+                  alert("Registration failed. Please try again later.");
+              }
+          } else {
+              alert("Error during registration. Please try again later.");
+          }
+      }
+  };
+
+  // Construct the data as a URL-encoded string
+  var data = "username=" + encodeURIComponent(username) +
+             "&email=" + encodeURIComponent(email) +
+             "&password=" + encodeURIComponent(password);
+
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.send(data);
+}
+
   
   
   

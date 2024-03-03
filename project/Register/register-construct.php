@@ -19,11 +19,11 @@
 
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" title="Please enter a valid email address">
+    <span class="password-info">Password must be at least 8 symbols long.</span>
 
     <label for="password">Password:</label>
     <input type="password" id="password" name="password">
-    <span class="password-info">Password must be at least 8 symbols long.</span>
-
+   
     <label for="confirm-password">Confirm Password:</label>
     <input type="password" id="confirm-password" name="confirm-password">
 

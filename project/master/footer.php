@@ -1,5 +1,7 @@
 <footer class="site-footer">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <div class="footer-container">
+            <div class="blue-section"></div>
             <div class="footer-content">
                 <div class="footer-section">
                     <h4>Contact Us</h4>
@@ -29,3 +31,33 @@
             </div>
         </div>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
+
+
+    
+    <script>
+$(document).ready(function () {
+    var startScrollEffect = false; // Flag to determine when to start the effect
+    var thresholdPercentage = 50; // Set the threshold percentage to start the effect
+
+    $(window).scroll(function () {
+        var scrollPercentage = ($(window).scrollTop() / ($(document).height() - $(window).height())) * 100;
+
+        // Check if the scroll percentage has reached the threshold
+        if (scrollPercentage >= thresholdPercentage) {
+            // Set the flag to true, indicating to start the effect
+            startScrollEffect = true;
+        }
+
+        // Apply the effect only if the flag is true
+        if (startScrollEffect) {
+            // Adjust the blue section width based on the scroll percentage
+            $(".blue-section").css("width", Math.min(25 + scrollPercentage, 100) + "%");
+        }
+    });
+});
+
+
+    </script>

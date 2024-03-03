@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>DomainName</title>
     <link rel="stylesheet" href="indexstyle.css">
     <link rel="stylesheet" href="master/footer-style.css">
@@ -17,9 +17,17 @@
         <a href="Login/construct.php" class="login-btn" id="log-btn">Login</a>
         <a href="Register/register-construct.php" class="register-btn" id="reg-btn">Register</a>
         
-        <a href="#about" class="about">About Us</a>
-        <a href="#shop" class="shop">Shop</a>
-        <a href="#membership" class="membership">Membership</a>
+        <a href="#about" onclick="closeDropdown()" class="about">About Us</a>
+        <a href="#shop" onclick="closeDropdown()" class="shop">Shop</a>
+        <a href="#membership" onclick="closeDropdown()" class="membership">Membership</a>
+
+        <button class="dropdown-btn">≡</button>
+        <div class="dropdown-content">
+            <a href="#about">About Us</a>
+            <a href="#shop">Shop</a>
+            <a href="#membership">Membership</a>
+        </div>
+
         <a href="#cart" class="cart">Cart</a>
     </nav>
 
@@ -139,6 +147,25 @@
         });
     });
 </script>
+
+
+<script>
+    function closeDropdown() {
+        document.querySelector('.dropdown-btn').classList.remove('active');
+    }
+
+    document.querySelector('.dropdown-btn').addEventListener('click', function () {
+        this.classList.toggle('active');
+    });
+
+    // Add event listeners for links inside the dropdown content
+    document.querySelectorAll('.dropdown-content a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            closeDropdown(); // Close the dropdown when a link is clicked
+        });
+    });
+</script>
+
 
 
 </body>

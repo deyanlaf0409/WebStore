@@ -1,10 +1,27 @@
 .site-footer {
   width: 100%;
-  background-color: #001227;
+  background-color: rgb(15, 122, 255);
   color: white;
   padding: 30px 0;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   margin-top: auto;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.5s ease;
+  z-index: 1;
+}
+
+.blue-section {
+  opacity: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15%; /* Initial 25% width */
+  height: 100%;
+  transform: skewX(+30deg);
+  background-color: blue; /* Initial blue color */
+  transition: width 0.5s ease, background-color 0.5s ease; /* Add a smooth transition effect */
+  z-index: 0;
 }
 
 .footer-container {
@@ -13,17 +30,25 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  z-index: 1;
 }
 
 .logo-container {
   flex: 1;
   order: 1;
+  z-index: 1;
+}
+
+.blue-section .footer-content {
+  z-index: 2;
 }
 
 .footer-content {
   flex: 2;
   display: flex;
   justify-content: space-around;
+  position: relative;
+  z-index: 1;
 }
 
 .footer-section {
@@ -33,6 +58,7 @@
 .footer-section h4 {
   font-size: 24px;
   margin-bottom: 10px;
+  z-index: 1;
 }
 
 .social-links {
@@ -71,17 +97,22 @@
 }
 
 .services a:hover {
-  color: rgb(77, 100, 195);
+  color: rgb(40, 40, 40);
 }
 
 .footer-bottom {
   margin-top: auto;
   text-align: center;
   font-size: 14px;
+  z-index: 1;
 }
 
 /* Additional styles for responsiveness */
-@media (max-width: 768px) {
+@media (max-device-width: 1000px) {
+  .site-footer {
+    width: 100vw;
+  }
+
   .footer-content {
       flex-direction: column;
       align-items: center;

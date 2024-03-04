@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // User does not exist, proceed with registration
         // You may want to hash the password before storing it in the database for security
         // For demonstration purposes, I'm using a simple INSERT query without password hashing
-        $sqlRegister = "INSERT INTO USERS (username, email, password, is_verified) VALUES ($1, $2, $3, false)";
+        $sqlRegister = "INSERT INTO USERS (username, email, password, is_verified, date_added) VALUES ($1, $2, $3, false, CURRENT_DATE)";
         $resultRegister = pg_query_params($conn, $sqlRegister, array($username, $email, $password));
 
         if ($resultRegister) {

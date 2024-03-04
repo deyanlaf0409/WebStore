@@ -63,7 +63,7 @@ function checkLogin(event) {
             console.log("Server Response:", response);
 
             if (response.trim() === "success") {
-                alert("Login successful!");
+                //alert("Login successful!");
                 window.location.href = "/project/samplewebpage.php"; // Redirect to another page
             } else if (response.trim() === "unverified") {
                 alert("Please verify your email before logging in.");

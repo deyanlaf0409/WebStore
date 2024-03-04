@@ -12,7 +12,22 @@
             padding: 0;
             background-color: #f2f2f2;
         }
-        .success-container {
+
+                /* Add a class for the fade-in effect */
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }   
+
+        form {
             margin: 200px auto;
             text-align: center;
             padding: 20px;
@@ -21,7 +36,13 @@
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             position: relative;
+            opacity: 0;
         }
+
+        .fade-in form {
+            opacity: 1;
+        }
+
         .btn {
             background: blue; /* Initial background color */
             color: white;
@@ -47,13 +68,19 @@
     <link rel="stylesheet" href="../../master/footer-style.css">
 </head>
 <body>
-    <div class="success-container">
+    <form class="fade-in" id="success-container">
         <h1>Registration Successful</h1>
         <p>Please verify your email before logging in.</p>
         <a href="../../Login/construct.php" class="btn">Login</a>
-    </div>
+    </form>
 
     <?php include '../../master/footer.php'; ?>
+
+    <script>
+        var form = document.getElementById("success-container");
+        // Set form opacity to 1
+        form.style.opacity = 1;
+    </script>
 
 </body>
 </html>

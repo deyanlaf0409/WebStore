@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Registration Successful</title>
+    <title>Verification Required</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -70,8 +70,8 @@
 </head>
 <body>
     <form class="fade-in" id="success-container">
-        <h1>Registration Successful!</h1>
-        <p>Please verify your email before logging in.</p>
+        <h1>E-mail has been send</h1>
+        <p>Please verify your email within 24 hours.</p>
         <a href="../../Login/construct.php" class="btn">Login</a>
     </form>
 

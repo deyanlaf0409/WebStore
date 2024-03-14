@@ -52,10 +52,56 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $mail->isHTML(true);
         $mail->Subject = 'Forgotten Password';
-        $mail->Body    = 'Your password is: ' . $userPassword;
-        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+        
+        // HTML body with professional design
+        $mail->Body = '
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>Forgotten Password</title>
+          <style>
+            body {
+              font-family: Arial, sans-serif;
+              background-color: #f4f4f4;
+              padding: 20px;
+            }
+            .container {
+              max-width: 600px;
+              margin: 0 auto;
+              background-color: #ffffff;
+              padding: 40px;
+              border-radius: 10px;
+              box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            }
+            h2 {
+              color: #333333;
+            }
+            .password {
+              font-weight: bold;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <h2>Forgotten Password</h2>
+            <p>Hi, from (CompanyName)<p>
 
+            <p>This is the e-mail for retrieving your existing password.<p>
+            <p>Your password is: <span class="password">' . $userPassword . '</span></p>
+            <p>If you wish to change your password, contact our Support team </p>
+
+            <br>
+            
+            <p>Best Regards</p>
+          </div>
+        </body>
+        </html>
+        ';
+        
+        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+        
         $mail->send();
+
         echo "success";
     } else {
         echo "Error querying the database: " . pg_last_error($conn);

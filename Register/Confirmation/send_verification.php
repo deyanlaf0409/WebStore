@@ -51,23 +51,56 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $mail->isHTML(true);
             $mail->Subject = 'Email Verification';
-
+            
             // HTML body with verification link
-            $verificationLink = 'http://yourwebsite.com/verify.php?email=' . urlencode($email);
+            $verificationLink = 'http://192.168.0.118/project/Register/Confirmation/verification.php?email=' . urlencode($email);
             $mail->Body = '
             <!DOCTYPE html>
             <html>
             <head>
               <title>Email Verification</title>
+              <style>
+                body {
+                  font-family: Arial, sans-serif;
+                  background-color: #f4f4f4;
+                  padding: 20px;
+                }
+                .container {
+                  max-width: 600px;
+                  margin: 0 auto;
+                  background-color: #ffffff;
+                  padding: 40px;
+                  border-radius: 10px;
+                  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+                }
+                h2 {
+                  color: #333333;
+                }
+                .button {
+                  display: inline-block;
+                  background-color: blue;
+                  color: white;
+                  padding: 10px 20px;
+                  text-decoration: none;
+                  border-radius: 25px;
+                }
+                .button:hover {
+                  background-color: #0056b3;
+                }
+              </style>
             </head>
             <body>
-              <p>Please click the following link to verify your email:</p>
-              <a href="' . $verificationLink . '">Verify Email</a>
+              <div class="container">
+                <h2>Email Verification</h2>
+                <p>Please click the following button to verify your email:</p>
+                <a class="button" href="' . $verificationLink . '">Verify Email</a>
+              </div>
             </body>
             </html>
             ';
-
+            
             $mail->AltBody = 'Please verify your email by visiting the following link: ' . $verificationLink;
+            
 
             $mail->send();
 

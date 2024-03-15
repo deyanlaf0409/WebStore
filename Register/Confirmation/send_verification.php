@@ -79,13 +79,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 .button {
                   display: inline-block;
                   background-color: blue;
-                  color: white;
+                  color: white !important;
                   padding: 10px 20px;
                   text-decoration: none;
                   border-radius: 25px;
                 }
                 .button:hover {
-                  background-color: #0056b3;
+                  background-color: rgb(15, 122, 255);
                 }
               </style>
             </head>

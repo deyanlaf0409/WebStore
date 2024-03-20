@@ -16,7 +16,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['email'])) {
     // Update the 'verify' column to true
     $query = "UPDATE users SET is_verified = true WHERE email = $1";
     $result = pg_query_params($conn, $query, array($email));
-
+    "postgres";
+    $password = "12345";
+    
     if ($result) {
         // Redirect the user to verification success page
         header("Location: verification_success.php");

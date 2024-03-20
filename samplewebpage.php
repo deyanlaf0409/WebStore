@@ -8,6 +8,7 @@
     <link rel="icon" type="image/x-icon" href="/project/favicon.ico">
     <link rel="stylesheet" href="indexstyle.css">
     <link rel="stylesheet" href="master/footer-style.css">
+    <link rel="stylesheet" href="master/content-style.css">
 </head>
 
 <body>
@@ -32,61 +33,7 @@
         <a href="#cart" class="cart">Cart</a>
     </nav>
 
-    <div class="container">
-        <section id="about" class="section">
-            <h2 class="section-header">About Us</h2>
-            <p>
-
-
-
-
-
-
-
-            </p>
-        </section>
-
-        <section id="shop" class="section">
-            <h2 class="section-header">Shop Products</h2>
-            <p>
-
-
-
-
-
-
-
-            </p>
-        </section>
-
-        <section id="membership" class="section">
-            <h2 class="section-header">Membership</h2>
-            <p>
-
-
-
-
-
-
-
-            </p>
-        </section>
-
-        <section id="cart" class="section">
-            <h2 class="section-header">Your Products</h2>
-            <p>
-
-
-
-
-
-
-
-            </p>
-        </section>
-
-        <button id="scrollToTopBtn" class="scroll-to-top-btn"></button>
-    </div>
+    <?php include 'master/content.php'; ?>
 
     <?php include 'master/footer.php'; ?>
 
@@ -129,25 +76,6 @@
         });
     </script>
 
-
-<script>
-    const scrollToTopButton = document.querySelector(".scroll-to-top-btn");
-
-    window.addEventListener("scroll", () => {
-        if (window.pageYOffset > 100) {
-            scrollToTopButton.classList.add("show");
-        } else {
-            scrollToTopButton.classList.remove("show");
-        }
-    });
-
-    scrollToTopButton.addEventListener("click", () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    });
-</script>
 
 
 <script>

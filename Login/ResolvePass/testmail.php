@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <body>
           <div class="container">
             <h2>Forgotten Password</h2>
-            <p>Hi, from (CompanyName)<p>
+            <p>Hi,<p>
 
             <p>This is the e-mail for retrieving your existing password.<p>
             <p>Your password is: <span class="password">' . $userPassword . '</span></p>
@@ -93,6 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <br>
             
             <p>Best Regards</p>
+            <p>(CompanyName)</p>
           </div>
         </body>
         </html>

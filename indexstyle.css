@@ -164,61 +164,7 @@ nav a {
 
 
 
-.container {
-    max-width: 80%;
-    margin: 120px 290px;
-    padding: 20px; /* Add padding for spacing from the sides */
-    border-radius: 15px; /* Add rounded borders */
-    background-color: #fff; /* Set background color */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
-}
 
-
-.section {
-    margin-bottom: 2rem;
-}
-
-.section-header {
-    font-size: 30px;
-    margin-bottom: 1rem;
-    color: #333;
-}
-
-
-.scroll-to-top-btn {
-    position: fixed;
-    bottom: 150px;
-    right: 150px;
-    width: 55px;
-    height: 55px;
-    background-color: blue;
-    border: none;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    z-index: 2;
-}
-
-.scroll-to-top-btn::before {
-    content: ""; /* Required for pseudo-elements */
-    position: absolute;
-    top: 50%; /* Adjust to vertically center the arrow */
-    left: 12.5px; /* Adjust to change the distance between the arrow and text */
-    width: 30px; /* Set the width of the arrow */
-    height: 30px;/* Set the height of the arrow */
-    background-image: url('res/arrow-up.png'); /* Replace with your image path */
-    background-size: contain; /* Ensure the entire image is visible */
-    background-repeat: no-repeat;
-    transform: translateY(-50%); /* Centers the arrow vertically */
-}
-
-.scroll-to-top-btn:hover {
-    background-color: rgb(15, 122, 255);
-    transform: scale(1.1);
-}
 
 
 /* Media Query for mobile devices */

@@ -106,6 +106,13 @@
         color: white; /* Change text color on hover */
         background-position: 0;
     }
+
+    @media screen and (max-width: 700px) {
+        .back-link {
+            top: 20px; 
+            left: 10px; 
+        }
+    }
 </style>
     <link rel="icon" type="image/x-icon" href="/project/favicon.ico">
     <link rel="stylesheet" href="../../master/footer-style.css">

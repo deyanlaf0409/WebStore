@@ -54,3 +54,19 @@
     background-color: rgb(15, 122, 255);
     transform: scale(1.1);
 }
+
+
+
+
+@media only screen and (max-device-width: 1000px) {
+    .container {
+        max-width: 100%;
+        margin: 20px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .scroll-to-top-btn {
+        display: none;
+    }
+}

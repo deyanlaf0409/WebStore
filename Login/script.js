@@ -64,7 +64,7 @@ function checkLogin(event) {
 
             if (response.trim() === "success") {
                 //alert("Login successful!");
-                window.location.href = "/project/samplewebpage.php"; // Redirect to another page
+                window.location.href = "/project/profile/user-page.php"; // Redirect to another page
             } else if (response.trim() === "unverified") {
                 alert("Please verify your email before logging in.");
                 // Optionally: Redirect to a page with instructions on email verification

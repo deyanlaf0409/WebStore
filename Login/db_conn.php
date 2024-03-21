@@ -1,7 +1,17 @@
 <?php
+
+session_start();
+
+
+// Set cache control headers to prevent caching
+header("Cache-Control: no-cache, no-store, must-revalidate");
+header("Pragma: no-cache");
+header("Expires: 0");
+
 // Assuming you have a PostgreSQL database connection established
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
 
 // Replace these variables with your actual database credentials
 $host = "localhost";
@@ -33,7 +43,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (pg_num_rows($result) > 0) {
         // User exists and is verified, perform login actions
+        // Retrieve the username from the query result
+        $user_row = pg_fetch_assoc($result);
+        $username = $user_row['username'];
+        
+        // Start session variables
+        $_SESSION['username'] = $username;
+
         echo "success";
+        
+        // Redirect to another page
+        //header("Location: /project/profile/user-page.php");
+        exit;
     } else {
         // Check if the user exists but is not verified
         $sqlUnverified = "SELECT * FROM USERS WHERE email = $1 AND password = $2 AND is_verified = false";
@@ -54,5 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 pg_close($conn);
 ?>
+
+
 
 

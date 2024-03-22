@@ -1,11 +1,17 @@
 
 .container {
     max-width: 80%;
-    margin: 120px 290px;
+    margin: 150px 290px;
+    margin-bottom: 100px;
     padding: 20px; /* Add padding for spacing from the sides */
     border-radius: 15px; /* Add rounded borders */
     background-color: #fff; /* Set background color */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+}
+
+
+.welcome + .container {
+    margin-top: 30px; /* Add margin-top only when welcome message is present */
 }
 
 
@@ -17,6 +23,40 @@
     font-size: 30px;
     margin-bottom: 1rem;
     color: #333;
+}
+
+
+
+.dropdown-btn {
+    display: none; /* Initially hide the dropdown button on larger screens */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    display: block;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #f2f2f2;
+}
+
+/* Display the dropdown menu when the dropdown button is hovered or focused */
+.dropdown-btn:hover + .dropdown-content,
+.dropdown-btn:focus + .dropdown-content {
+    display: block;
 }
 
 

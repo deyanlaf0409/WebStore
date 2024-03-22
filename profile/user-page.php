@@ -12,23 +12,6 @@
 </head>
 
 <body>
-    <header id="home">
-        <?php
-        // Start session
-        session_start();
-
-        // Check if the username is set in the session
-        if (isset($_SESSION['username'])) {
-            // Retrieve the username from the session
-            $username = $_SESSION['username'];
-            // Display the welcome message
-            echo "<h1>Welcome, $username !</h1>";
-        } else {
-            // If username is not set, display default message
-            header("Location: /project/Login/construct.php");
-        }
-        ?>
-    </header>
 
     <nav>
         <a href="logout.php" class="logout" id="logout-btn">Logout</a>
@@ -47,6 +30,24 @@
 
         <a href="#cart" class="cart">Cart</a>
     </nav>
+
+    <header class="welcome">
+        <?php
+        // Start session
+        session_start();
+
+        // Check if the username is set in the session
+        if (isset($_SESSION['username'])) {
+            // Retrieve the username from the session
+            $username = $_SESSION['username'];
+            // Display the welcome message
+            echo "<h1>Welcome, $username !</h1>";
+        } else {
+            // If username is not set, display default message
+            header("Location: /project/Login/construct.php");
+        }
+        ?>
+    </header>
 
     <?php include '../master/content.php'; ?>
 

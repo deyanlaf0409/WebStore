@@ -69,7 +69,7 @@ function checkLogin(event) {
                 alert("Please verify your email before logging in.");
                 // Optionally: Redirect to a page with instructions on email verification
             } else {
-                alert("Invalid email or password. Please try again.");
+                alert("Invalid email or password.");
             }
 
             // Allow form submission after the AJAX request completes

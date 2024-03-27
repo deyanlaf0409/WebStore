@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="cntnr">
         <section id="about" class="section">
             <h2 class="section-header">About Us</h2>
             <p>
@@ -73,4 +73,16 @@
             behavior: "smooth"
         });
     });
-</script>
+    </script>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        // Add 'fade-in' class to elements with class 'login-btn' and 'register-btn'
+        document.querySelector('.container').classList.add('fade-in');
+        });
+
+        var container = document.getElementById("cntnr");
+        container.style.opacity = 1;
+    </script>

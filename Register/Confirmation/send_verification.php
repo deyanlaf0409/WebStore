@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Subject = 'Email Verification';
             
             // HTML body with verification link
-            $verificationLink = 'http://192.168.0.118/project/Register/Confirmation/verification.php?email=' . urlencode($email);
+            $verificationLink = 'http://192.168.0.202/project/Register/Confirmation/verification.php?email=' . urlencode($email);
             $mail->Body = '
             <!DOCTYPE html>
             <html>

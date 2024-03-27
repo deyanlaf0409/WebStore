@@ -9,12 +9,14 @@
     <link rel="stylesheet" href="page-style.css">
     <link rel="stylesheet" href="../master/footer-style.css">
     <link rel="stylesheet" href="../master/content-style.css">
+    <link rel="stylesheet" href="dialog-style.css">
+
 </head>
 
 <body>
 
     <nav>
-        <a href="logout.php" class="logout" id="logout-btn">Logout</a>
+        <a class="logout" id="logout-btn">Logout</a>
         <a href="profile-page.php" class="profile" id="prof-btn">Profile</a>
 
         <a href="#about" onclick="closeDropdown()" class="about">About Us</a>
@@ -51,68 +53,92 @@
 
     <?php include '../master/content.php'; ?>
 
+    <?php include 'dialog-out.html'; ?>
+
     <?php include '../master/footer.php'; ?>
 
-
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Add 'fade-in' class to elements with class 'login-btn' and 'register-btn'
-            document.querySelector('.logout').classList.add('fade-in');
-            document.querySelector('.profile').classList.add('fade-in');
-        });
+    document.addEventListener('DOMContentLoaded', function () {
+        // Add 'fade-in' class to elements with class 'login-btn' and 'register-btn'
+        document.querySelector('.logout').classList.add('fade-in');
+        document.querySelector('.profile').classList.add('fade-in');
+    });
 
-        var logBtn = document.getElementById("logout-btn");
-        logBtn.style.opacity = 1;
-        var regBtn = document.getElementById("prof-btn");
-        regBtn.style.opacity = 1;
-    </script>
+    var logBtn = document.getElementById("logout-btn");
+    logBtn.style.opacity = 1;
+    var regBtn = document.getElementById("prof-btn");
+    regBtn.style.opacity = 1;
 
+</script>
 
-    <script>
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
 
+            const offsetTop = targetElement.offsetTop;
+            const headerHeight = document.querySelector('header').offsetHeight;
+            const offset = offsetTop - headerHeight;
 
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-
-
-                const offsetTop = targetElement.offsetTop;
-                const headerHeight = document.querySelector('header').offsetHeight;
-                const offset = offsetTop - headerHeight;
-
-
-                window.scrollTo({
-                    top: offset,
-                    behavior: 'smooth'
-                });
+            window.scrollTo({
+                top: offset,
+                behavior: 'smooth'
             });
         });
-    </script>
+    });
+</script>
 
+<script>
+    function closeDropdown() {
+        document.querySelector('.dropdown-btn').classList.remove('active');
+    }
 
+    document.querySelector('.dropdown-btn').addEventListener('click', function () {
+        this.classList.toggle('active');
+    });
 
-    <script>
-        function closeDropdown() {
-            document.querySelector('.dropdown-btn').classList.remove('active');
-        }
-
-        document.querySelector('.dropdown-btn').addEventListener('click', function () {
-            this.classList.toggle('active');
+    // Add event listeners for links inside the dropdown content
+    document.querySelectorAll('.dropdown-content a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            closeDropdown(); // Close the dropdown when a link is clicked
         });
+    });
+</script>
 
-        // Add event listeners for links inside the dropdown content
-        document.querySelectorAll('.dropdown-content a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                closeDropdown(); // Close the dropdown when a link is clicked
-            });
-        });
-    </script>
+<script>
+    document.getElementById("logout-btn").addEventListener('click', function (event) {
+        // Prevent the default behavior of the anchor element
+        event.preventDefault();
+
+        // Show confirmation dialog
+        document.getElementById("confirmationDialog").style.display = "block";
+
+        event.preventDefault();
+
+        // Ensure that browser's default confirmation dialog is hidden
+        return false;
+    });
+
+    document.getElementById("confirmLogout").addEventListener('click', function () {
+        // If user clicks "Yes", proceed with logout
+        window.location.href = "logout.php";
+    });
+
+    document.getElementById("cancelLogout").addEventListener('click', function () {
+        // If user clicks "Cancel", hide confirmation dialog
+        document.getElementById("confirmationDialog").style.display = "none";
+    });
+</script>
+
+
+
 
 
 
 </body>
 
 </html>
+

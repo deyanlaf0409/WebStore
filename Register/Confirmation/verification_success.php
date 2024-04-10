@@ -9,7 +9,7 @@
             flex-direction: column;
             min-height: 100vh; /* Set the body to fill the viewport height */
             margin: 0;
-            padding: 0;Required
+            padding: 0;
             background-color: #f2f2f2;
         }
 

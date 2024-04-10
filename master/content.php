@@ -1,3 +1,8 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>
+
 <div class="container" id="cntnr">
         <section id="about" class="section">
             <h2 class="section-header">About Us</h2>
@@ -15,6 +20,8 @@
         <section id="shop" class="section">
             <h2 class="section-header">Shop Products</h2>
             <p>
+                <?php include 'products/card.html'; ?>
+                <?php include 'products/card-2.html'; ?>
 
 
 

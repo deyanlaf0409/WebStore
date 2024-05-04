@@ -36,28 +36,35 @@
     
 
 
-    
     <script>
-$(document).ready(function () {
+  $(document).ready(function () {
     var startScrollEffect = false; // Flag to determine when to start the effect
     var thresholdPercentage = 50; // Set the threshold percentage to start the effect
 
+    // Set the initial width of the blue section to 100% when the document is ready
+    $(".blue-section").css("width", "100%");
+
     $(window).scroll(function () {
-        var scrollPercentage = ($(window).scrollTop() / ($(document).height() - $(window).height())) * 100;
+      var scrollPercentage = ($(window).scrollTop() / ($(document).height() - $(window).height())) * 100;
+      var blueSectionWidth = 100 - Math.min(25 + scrollPercentage, 100); // Calculate the width of the blue section
 
-        // Check if the scroll percentage has reached the threshold
-        if (scrollPercentage >= thresholdPercentage) {
-            // Set the flag to true, indicating to start the effect
-            startScrollEffect = true;
-        }
+      // Check if the scroll percentage has reached the threshold
+      if (scrollPercentage >= thresholdPercentage) {
+        // Set the flag to true, indicating to start the effect
+        startScrollEffect = true;
+      }
 
-        // Apply the effect only if the flag is true
-        if (startScrollEffect) {
-            // Adjust the blue section width based on the scroll percentage
-            $(".blue-section").css("width", Math.min(25 + scrollPercentage, 100) + "%");
-        }
+      // Adjust the blue section width based on the scroll percentage
+      $(".blue-section").css("width", blueSectionWidth + "%");
+
+      // Set the initial width to 100% if the scroll percentage is less than the threshold
+      if (scrollPercentage < thresholdPercentage && !startScrollEffect) {
+        $(".blue-section").css("width", "100%");
+      } else if (scrollPercentage === 0) {
+        $(".blue-section").css("width", "100%");
+        startScrollEffect = false; // Reset the flag when scrolling back to the top
+      }
     });
-});
+  });
+</script>
 
-
-    </script>

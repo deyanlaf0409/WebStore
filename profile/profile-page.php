@@ -57,7 +57,9 @@
         }   
 
         form {
-            margin: 200px auto;
+            margin: 50px auto;
+            width: 300px;
+            height: 400px;
             text-align: center;
             padding: 20px;
             border: 1px solid #ccc;
@@ -71,7 +73,43 @@
         .fade-in form {
             opacity: 1;
         }
+
+        .order-status {
+            background-color: #ddd;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        .delete-button {
+            background-color: rgb(237, 43, 43);
+            color: white;
+            border: none;
+            padding: 10px 10px;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+
+        .delete-button:hover {
+            background-color: rgb(189, 32, 32);
+        }
+
+
+        @media screen and (max-width: 700px) {
+            .back-link {
+                top: 20px; 
+                left: 10px; 
+            } 
+        }
+
     </style>
+
+
+
+
     <link rel="icon" type="image/x-icon" href="/project/favicon.ico">
     <link rel="stylesheet" href="../master/footer-style.css">
 </head>
@@ -82,8 +120,37 @@
     </div>
 
     <form class="fade-in" id="success-container">
-        <h1>[USERNAME]</h1>
-        <p>Orders:</p>
+        <h1>
+
+            <img src="../res/Default_pfp.png" width="110" height="110">
+
+        </h1>
+
+        <h2>
+        <?php
+        // Start session
+        session_start();
+
+        // Check if the username is set in the session
+        if (isset($_SESSION['username'])) {
+            // Retrieve the username from the session
+            $username = $_SESSION['username'];
+            
+            echo "<h1>$username</h1>";
+        } else {
+            // If username is not set, display default message
+            header("Location: /project/Login/construct.php");
+        }
+        ?>
+        </h2>
+
+        <h3 style="text-align: left;">Orders:</h3>
+        <div class="order-status">
+            <!-- Add your order status here -->
+        </div>
+
+        <button class="delete-button">Delete Account</button>
+
     </form>
 
     <?php include '../master/footer.php'; ?>

@@ -1,6 +1,6 @@
 .site-footer {
   width: 100%;
-  background-color: rgb(15, 122, 255);
+  background-color: rgb(18, 27, 63);
   color: white;
   padding: 20px 0;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -12,16 +12,15 @@
 }
 
 .blue-section {
-  opacity: 50%;
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0; /* Changed from left: 0; */
   width: 15%; /* Initial 25% width */
   height: 100%;
-  transform: skewX(+30deg);
-  background-color: blue; /* Initial blue color */
+  transform: skewX(-30deg); /* Changed from skewX(+30deg); */
+  background-color: rgb(14, 22, 56); /* Initial blue color */
   transition: width 0.5s ease, background-color 0.5s ease; /* Add a smooth transition effect */
-  z-index: 0;
+  z-index: 100;
 }
 
 .footer-container {
@@ -127,7 +126,8 @@
   }
 
   .blue-section {
-    transform: skewX(+15deg);
+    transform: skewX(-15deg); /* Changed from skewX(+15deg); */
   }
 }
+
 

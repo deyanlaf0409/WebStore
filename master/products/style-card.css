@@ -1,12 +1,10 @@
-
-
 .card {
   display: inline-block; /* Display cards next to each other */
   vertical-align: top; /* Align cards to the top */
   margin-right: 1.5px; /* Add some margin between cards */
   position: relative;
   width: 245px;
-  height: 350px;
+  height: 280px;
   
   border-radius: 10px;
   overflow: hidden;
